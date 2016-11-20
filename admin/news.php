@@ -1,10 +1,10 @@
 <?php
     include('common/header.php');
-	$currentPage = 'home_slider';
+	$currentPage = 'news';
     include('common/left-menu.php');
-	
-	$homeQry = "SELECT * FROM tbl_home_slider ";
-	$ExcuteHomeQry = mysqli_query($conn, $homeQry);
+
+	$newsQry = "SELECT * FROM tbl_news";
+	$ExcutenewsQry = mysqli_query($conn, $newsQry);
     	
 ?>
 <div id="page-wrapper">
@@ -12,12 +12,12 @@
             <div class="row">
                 <div class="col-md-12">
 					 <h1 class="page-header">
-                            Home Sliders
+                            Training Programme
                       </h1>
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading text-right">
-                             <a href="add-home-slider.php"><button class="btn btn-primary">Add New Slider</button></a>
+                             <button class="btn btn-primary">Add Training Program</button>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -25,8 +25,9 @@
                                     <thead>
                                         <tr>
                                             <th>Title</th>
-                                            <th>Image</th>
-                                            <th>Url</th>
+                                            <th>Description</th>
+											<th>Date</th>
+											<th>Gallery</th>
                                             <th>Status</th>
                                             <th>Create date</th>
                                             <th>Action</th>
@@ -34,22 +35,23 @@
                                     </thead>
                                     <tbody>
 									<?php
-										if(mysqli_num_rows($ExcuteHomeQry) > 0){
-											while($homeSliders = mysqli_fetch_assoc($ExcuteHomeQry)) {
-												$title = $homeSliders["title"];
-												$image = $homeSliders["image"];
-												$url = $homeSliders["link"];
-												$status = $homeSliders["status"];
-												$created_date = $homeSliders["created_date"];
-											
+										if(mysqli_num_rows($ExcutenewsQry) > 0){
+											while($news = mysqli_fetch_assoc($ExcutenewsQry)) {
+												$title = $news["title"];
+												$description = $news["description"];
+												$date = $news["date"];
+												$gallery = $news["gallery"];
+												$status = $news["status"];
+												$created_date = $news["created_date"];
 										?>
 										<tr class="odd gradeX">
                                             <td><?php echo ucfirst($title);?></td>
-                                            <td><image src="../uploads/home-slider/<?php echo $image;?>" style="height:50px;width:50px;" /></td>
-                                            <td><?php echo $url;?></td>
+											<td><?php echo $description;?></td>
+											<td><?php echo $date;?></td>
+                                            <td><?php echo $gallery;?></td>
                                             <td><?php echo ($status == 1)?'Active':'In Active';?></td>
                                             <td><?php echo $created_date;?></td>
-                                            <td>
+											<td>
 												<button class="btn btn-primary">Edit</button>
 												<button class="btn btn-danger">Delete</button>
 											</td>

@@ -6,3 +6,15 @@
 
     padding-right:20px;
 }
+.required{
+	color:red;
+}
+.errorMessage{
+	display:none;
+}
+.form-group{
+	padding-bottom:25px !important;
+}
+#main-menu li a:hover{
+	background-color:#225081;
+}

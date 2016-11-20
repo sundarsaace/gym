@@ -13,14 +13,14 @@
                 <a href="training-program.php" class="<?php echo ($currentPage == 'training')?'active-menu':'';?>" ><i class="fa fa-bar-chart-o"></i> Training Programme</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-qrcode"></i> News & Events</a>
+                <a href="news.php" class="<?php echo ($currentPage == 'news')?'active-menu':'';?>"><i class="fa fa-qrcode"></i> News & Events</a>
             </li>
             
             <li>
-                <a href="#"><i class="fa fa-table"></i> Photo Gallery</a>
+                <a href="photo-gallery.php" class="<?php echo ($currentPage == 'gallery')?'active-menu':'';?>"><i class="fa fa-table"></i> Photo Gallery</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-edit"></i> Contact Us </a>
+                <a href="contact-us.php" class="<?php echo ($currentPage == 'contact')?'active-menu':'';?>"><i class="fa fa-edit"></i> Contact Us </a>
             </li>
         </ul>
     </div>

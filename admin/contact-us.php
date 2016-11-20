@@ -1,10 +1,10 @@
 <?php
     include('common/header.php');
-	$currentPage = 'home_slider';
+	$currentPage = 'contact';
     include('common/left-menu.php');
-	
-	$homeQry = "SELECT * FROM tbl_home_slider ";
-	$ExcuteHomeQry = mysqli_query($conn, $homeQry);
+
+	$photoQry = "SELECT * FROM tbl_contact";
+	$ExcutephotoQry = mysqli_query($conn, $photoQry);
     	
 ?>
 <div id="page-wrapper">
@@ -12,46 +12,44 @@
             <div class="row">
                 <div class="col-md-12">
 					 <h1 class="page-header">
-                            Home Sliders
+                            Enquery details
                       </h1>
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
-                        <div class="panel-heading text-right">
-                             <a href="add-home-slider.php"><button class="btn btn-primary">Add New Slider</button></a>
-                        </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Title</th>
-                                            <th>Image</th>
-                                            <th>Url</th>
-                                            <th>Status</th>
-                                            <th>Create date</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Contact Number</th>
+                                            <th>Select Type</th>
+                                            <th>Message</th>
+											<th>Created date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 									<?php
-										if(mysqli_num_rows($ExcuteHomeQry) > 0){
-											while($homeSliders = mysqli_fetch_assoc($ExcuteHomeQry)) {
-												$title = $homeSliders["title"];
-												$image = $homeSliders["image"];
-												$url = $homeSliders["link"];
-												$status = $homeSliders["status"];
-												$created_date = $homeSliders["created_date"];
-											
+										if(mysqli_num_rows($ExcutephotoQry) > 0){
+											while($photogallery = mysqli_fetch_assoc($ExcutephotoQry)) {
+												$name = $photogallery["name"];
+												$email = $photogallery["email"];
+												$contact_number = $photogallery["contact_number"];
+												$selecttype = $photogallery["selecttype"];
+												$message = $photogallery["message"];
+												$created_date = $photogallery["created_date"];
 										?>
 										<tr class="odd gradeX">
-                                            <td><?php echo ucfirst($title);?></td>
-                                            <td><image src="../uploads/home-slider/<?php echo $image;?>" style="height:50px;width:50px;" /></td>
-                                            <td><?php echo $url;?></td>
-                                            <td><?php echo ($status == 1)?'Active':'In Active';?></td>
+                                            <td><?php echo ucfirst($name);?></td>
+											<td><?php echo $email;?></td>
+											<td><?php echo $contact_number;?></td>
+                                            <td><?php echo $selecttype;?></td>
+                                            <td><?php echo $message;?></td>
                                             <td><?php echo $created_date;?></td>
-                                            <td>
-												<button class="btn btn-primary">Edit</button>
-												<button class="btn btn-danger">Delete</button>
+											<td>
+												<button class="btn btn-primary">view</button>
 											</td>
                                             
                                         </tr>

@@ -2,7 +2,12 @@
     include('common/header.php');
 	$currentPage = 'training';
     include('common/left-menu.php');
-
+	if(isset($_GET['id']) && !empty($_GET['id'])){
+		$programid=$_GET['id'];
+		$deleteQury = "DELETE FROM tbl_training_prog WHERE id='".$programid."'";
+		mysqli_query($conn,$deleteQury);
+	}
+	
 	$trainingQry = "SELECT * FROM tbl_training_prog";
 	$ExcuteTraingQry = mysqli_query($conn, $trainingQry);
     	
@@ -36,6 +41,7 @@
 									<?php
 										if(mysqli_num_rows($ExcuteTraingQry) > 0){
 											while($trainingSliders = mysqli_fetch_assoc($ExcuteTraingQry)) {
+												$id = $trainingSliders['id'];
 												$title = $trainingSliders["title"];
 												$image = $trainingSliders["image"];
 												$description = $trainingSliders["description"];
@@ -50,7 +56,7 @@
                                             <td><?php echo $created_date;?></td>
 											<td>
 												<button class="btn btn-primary">Edit</button>
-												<button class="btn btn-danger">Delete</button>
+												<button class="btn btn-danger" onclick="deteterecords(<?php echo $id;?>)">Delete</button>
 											</td>
                                             
                                         </tr>
@@ -78,6 +84,12 @@
     include('common/footer.php');
 ?> 
 <script>
+function deteterecords(id)	
+{
+	if(confirm("Are u sure you want to delete this record")){
+		window.location.href ='training-program.php?id='+id;
+	}
+}	
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
